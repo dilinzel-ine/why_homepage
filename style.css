@@ -99,7 +99,7 @@ body {
     font-weight: 700;
     color: #cacaca;
     text-align: right;
-    font-size: clamp(6rem, 12vw, 15.5rem);
+    font-size: clamp(6rem, 23vw, 15.5rem);
     letter-spacing: -1.2rem;
     line-height: 0.8;
 }
@@ -155,12 +155,66 @@ body {
 
 
 /* ----------------------------------------------- */
-/* to screens that are 768px wide or smaller. */
 
-@media (max-width: 768px) {
+@media (max-width: 992px),
+/* Tablets (landscape) and small laptops */
+(max-width: 768px)
+/* Tablets (portrait) */
+    {
+    .container {
+        width: 98%;
+        pointer-events: none;
+    }
+
+    .cursor-letter,
+    .main-content h1::after,
+    .main-content h1:hover::after,
+    .abstract:hover {
+        display: none;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .left {
+        /* Change from a side column to a top bar */
+        flex-direction: row;
+        align-items: center;
+        top: 5%;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 2rem;
+    }
+
+
+    .main-content h1 {
+        text-align: right;
+        font-size: 25cqw;
+        /* 25% of container width */
+        letter-spacing: -2cqw;
+        line-height: 0.77;
+    }
+}
+
+
+/* ------------------------------------------------------ */
+/* Medium devices (large phones, small tablets) */
+@media (max-width: 600px) {
 
     .container {
         width: 98%;
+        pointer-events: none;
+    }
+
+    .cursor-letter,
+    .main-content h1::after,
+    .main-content h1:hover::after,
+    .abstract:hover {
+        display: none;
+        user-select: none;
+        pointer-events: none;
     }
 
     .left {
@@ -207,18 +261,15 @@ body {
         line-height: 0.77;
     }
 
-    .cursor-letter,
-    .main-content h1::after {
-        display: none;
-    }
 
     .abstract {
         width: 80%;
         height: 80%;
-        left: 55%;
-        top: 60%;
+        left: 12%;
+        top: 20%;
         transform: translate(-50%, -50%);
         mix-blend-mode: multiply;
+        transform: scale(1);
     }
 
 
