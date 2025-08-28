@@ -26,7 +26,7 @@
 }
 
 body {
-    background-color: #12121200;
+    background-color: #121212;
     color: #ffffff;
     width: 100%;
     height: 100vh;
@@ -152,6 +152,78 @@ body {
 .abstract:hover {
     transform: scale(1.1);
 }
+
+
+/* ----------------------------------------------- */
+/* to screens that are 768px wide or smaller. */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 98%;
+    }
+
+    .left {
+        /* Change from a side column to a top bar */
+        flex-direction: row;
+        align-items: center;
+        top: 5%;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: auto;
+        padding: 1.5rem 2rem;
+    }
+
+    /* Remove absolute positioning on children */
+    .phrase,
+    .logo {
+        position: static;
+    }
+
+    .phrase h6 {
+        font-size: 0.7rem;
+    }
+
+    .logo img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .main-content {
+        width: 100%;
+        left: 40%;
+        right: 2rem;
+        transform: translate(-50%, -50%);
+        /* padding-top: 5rem; */
+    }
+
+    .main-content h1 {
+        text-align: right;
+        font-size: 35cqw;
+        /* 25% of container width */
+        letter-spacing: -3.5cqw;
+        line-height: 0.77;
+    }
+
+    .main-content h1::after {
+        display: none;
+    }
+
+    .abstract {
+        width: 80%;
+        height: 80%;
+        left: 55%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: multiply;
+    }
+
+
+}
+
+/* ------------------------------------------------------------------- */
 
 /* Bottom Navigation 
 .site-nav {
