@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    /* cursor: none; */
+}
+
+/* General Body & Layout Styles */
+.cursor-letter {
+    position: fixed;
+    text-align: center;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    color: rgba(99, 193, 61, 0.6);
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 100;
+    font-size: 10px;
+    pointer-events: none;
+    z-index: 5;
+    will-change: transform;
+    transform-origin: center center;
+}
+
+body {
+    background-color: #12121200;
+    color: #ffffff;
+    width: 100%;
+    height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 99%;
+    width: 82%;
+    margin: 0 auto;
+    padding: 0 2rem 0 2rem;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Logo */
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 2rem;
+    bottom: 1px;
+    left: 2rem;
+}
+
+.phrase {
+    position: absolute;
+    top: 2rem;
+}
+
+.phrase h6 {
+    color: #cacaca;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.logo {
+    position: absolute;
+    bottom: 30px;
+}
+
+.logo img {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    transition: filter 0.3s ease-in-out;
+}
+
+.logo img:hover {
+    filter: grayscale(1);
+}
+
+/* Main Vertical Title */
+.main-content {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+}
+
+.main-content h1 {
+    position: relative;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 15rem;
+    font-weight: 700;
+    line-height: 0.8;
+    color: #cacaca;
+    text-align: right;
+    letter-spacing: -21px;
+    height: 90vh;
+}
+
+.main-content h1::after {
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 1px #cacacaaa;
+    color: transparent;
+    pointer-events: none;
+    /* add transition for animatable properties */
+    transition: filter 1s ease-in-out, opacity 1s ease-in-out;
+
+}
+
+.main-content h1:hover::after {
+    filter: blur(20px);
+    opacity: 0.1;
+}
+
+.main-content h1 .word {
+    display: block;
+    /* Make spans stack vertically */
+    transition: filter 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.main-content h1 .word:hover {
+    filter: blur(20px);
+    opacity: 0.1;
+}
+
+.abstract {
+    width: 100%;
+    position: absolute;
+    top: 5%;
+    right: 6em;
+    bottom: 3rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    transform: scale(0.9);
+    transition: transform 1s ease-in-out;
+    will-change: transform;
+}
+
+.abstract:hover {
+    transform: scale(1);
+}
+
+/* Bottom Navigation 
+.site-nav {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;                    
+    transform: translateX(-50%); 
+    width: 80%; 
+    padding: 0 2rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.1em;
+}
+
+.site-nav a {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #cacaca;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 1em; 
+}
+.site-nav a span {
+    display: block;
+    transform: translateY(0);
+    transition: transform 1s cubic-bezier(.19,1,.22,1);
+}
+
+.site-nav a::after{
+    content: attr(data-content);
+    position: absolute;
+    left: 0;
+    top: 100%; 
+    width: 100%;
+    color: #cacaca;
+    transition: transform 1s cubic-bezier(.19,1,.22,1);
+}
+.site-nav a:hover span {
+    transform: translateY(-100%);
+}
+
+.site-nav a:hover::after {
+    transform: translateY(-100%);
+}*/
