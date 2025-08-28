@@ -38,7 +38,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 99vh;
+    height: 90vh;
     width: 82%;
     margin: 0 auto;
     padding: 0 2rem 0 2rem;
@@ -90,7 +90,7 @@ body {
     position: absolute;
     top: 50%;
     right: 2rem;
-    transform: translateY(-55%);
+    transform: translateY(-50%);
 }
 
 .main-content h1 {
