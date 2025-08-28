@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "images/webp/3d-ren-50.webp",
     "images/webp/3d-ren-51.webp",
     "images/webp/3d-ren-52.webp",
+    "images/webp/3d-ren-53.webp",
   ];
 
   // Pick a random image

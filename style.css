@@ -96,13 +96,12 @@ body {
 .main-content h1 {
     position: relative;
     font-family: "Space Grotesk", sans-serif;
-    font-size: 15.5rem;
     font-weight: 700;
-    line-height: 0.77;
     color: #cacaca;
     text-align: right;
-    letter-spacing: -21px;
-    /* height: 90vh; */
+    font-size: clamp(6rem, 12vw, 15.5rem);
+    letter-spacing: -1.2rem;
+    line-height: 0.8;
 }
 
 .main-content h1::after {
