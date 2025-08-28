@@ -99,7 +99,8 @@ body {
     font-weight: 700;
     color: #cacaca;
     text-align: right;
-    font-size: clamp(6rem, 23vw, 15.5rem);
+    /* font-size: clamp(6rem, 15cqw, 15.5rem); */
+    font-size: 15rem;
     letter-spacing: -1.2rem;
     line-height: 0.8;
 }
