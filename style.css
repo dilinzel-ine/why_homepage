@@ -31,7 +31,7 @@ body {
     background-color: #12121200;
     color: #ffffff;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     font-family: "Space Grotesk", sans-serif;
     overflow: hidden;
 }
@@ -55,7 +55,7 @@ body {
     justify-content: space-between;
     position: absolute;
     top: 2rem;
-    bottom: 1px;
+    bottom: 4rem;
     left: 2rem;
 }
 
