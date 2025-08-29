@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +5,110 @@
     user-select: none;
     /* cursor: none; */
 }
+
+*,
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.scroll-container {
+    height: 100vh;
+    overflow-y: scroll;
+    /* scroll-snap-type: y mandatory; */
+}
+
+body {
+    overflow: hidden;
+    background-color: #121212;
+    width: 100%;
+    height: 100vh;
+    font-family: "Space Grotesk", sans-serif;
+    background-image: url("/images/noise.svg");
+    background-repeat: repeat;
+    background-blend-mode: overlay;
+}
+
+
+:root {
+    --bg: #63c13d;
+    /* warm background */
+    --ink: #63c13d;
+    /* headline color */
+    --pill: #9b3dc1;
+    /* pill fill */
+    --pill-text: #121212;
+    /* pill text */
+    --pill-edge: #9b3dc1;
+    /* pill border & shadow */
+}
+
+.hero {
+    padding: clamp(24px, 6vw, 80px);
+    /* background: var(--bg); */
+    overflow: hidden;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+
+}
+
+.tag {
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    position: absolute;
+    inset: 0%;
+}
+
+.title {
+    position: relative;
+    margin: 0;
+    color: var(--ink);
+    font: 900 clamp(2.5rem, 12vw, 10rem)/0.88 "Space Grotesk", sans-serif;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.sticker {
+    position: absolute;
+    left: var(--x, 0);
+    top: var(--y, 0);
+    display: inline-block;
+    padding: .35em .85em;
+    border-radius: 9999px;
+    background: var(--pill);
+    color: var(--pill-text);
+    border: .2rem solid var(--bg);
+    font: 800 clamp(.55rem, 1.6vw, .9rem)/1 "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: transform 0.1s linear;
+}
+
+.sticker:nth-of-type(1) {
+    top: 25%;
+    left: 16%;
+}
+
+.sticker:nth-of-type(2) {
+    top: 35%;
+    left: 65%;
+}
+
+.sticker:nth-of-type(3) {
+    top: 55%;
+    left: 40%;
+}
+
 
 /* General Body & Layout Styles */
 .cursor-letter {
@@ -25,24 +127,25 @@
     transform-origin: center center;
 }
 
-body {
-    background-color: #12121200;
-    color: #ffffff;
-    width: 100%;
-    height: 90vh;
-    font-family: "Space Grotesk", sans-serif;
-    overflow: hidden;
-}
-
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
     width: 82%;
     margin: 0 auto;
     padding: 0 2rem 0 2rem;
     position: relative;
+    box-sizing: border-box;
+}
+
+.section-container {
+    padding: 5rem 2rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 99%;
     box-sizing: border-box;
 }
 
@@ -70,6 +173,36 @@ body {
     letter-spacing: 0.5px;
 }
 
+.phrase div {
+    position: relative;
+    overflow: hidden;
+    height: 1.2em;
+}
+
+.phrase span {
+    display: block;
+    transform: translateY(0);
+    transition: transform 1s cubic-bezier(.19, 1, .22, 1);
+}
+
+.phrase div::after {
+    content: attr(data-content);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    color: #cacaca;
+    transition: transform 1s cubic-bezier(.19, 1, .22, 1);
+}
+
+.phrase div:hover span {
+    transform: translateY(-100%);
+}
+
+.phrase div:hover::after {
+    transform: translateY(-100%);
+}
+
 .logo {
     position: relative;
 }
@@ -88,7 +221,7 @@ body {
 /* Main Vertical Title */
 .main-content {
     position: absolute;
-    top: 50%;
+    top: 45%;
     right: 2rem;
     transform: translateY(-50%);
 }
@@ -99,39 +232,9 @@ body {
     font-weight: 700;
     color: #cacaca;
     text-align: right;
-    /* font-size: clamp(6rem, 15cqw, 15.5rem); */
     font-size: 15rem;
-    letter-spacing: -1.2rem;
+    letter-spacing: -21px;
     line-height: 0.8;
-}
-
-.main-content h1::after {
-    position: absolute;
-    inset: 0 0 0 0;
-    content: attr(data-content);
-    z-index: 2;
-    -webkit-text-stroke: 1px #cacacaaa;
-    color: transparent;
-    pointer-events: none;
-    /* add transition for animatable properties */
-    transition: filter 1s ease-in-out, opacity 1s ease-in-out;
-
-}
-
-.main-content h1:hover::after {
-    filter: blur(20px);
-    opacity: 0.1;
-}
-
-.main-content h1 .word {
-    display: block;
-    /* Make spans stack vertically */
-    transition: filter 1s ease-in-out, opacity 1s ease-in-out;
-}
-
-.main-content h1 .word:hover {
-    filter: blur(20px);
-    opacity: 0.1;
 }
 
 .abstract {
@@ -143,7 +246,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1;
+    z-index: 2;
     mix-blend-mode: multiply;
     transform: scale(0.9);
     transition: transform 1s ease-in-out;
@@ -154,14 +257,98 @@ body {
     transform: scale(1.1);
 }
 
+.main-content h1::after {
+    margin: 0;
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 4;
+    -webkit-text-stroke: 1px #ccc;
+    color: transparent;
+    pointer-events: none;
+    transition: filter 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+
+.main-content h1:hover::after {
+    filter: blur(20px);
+    opacity: 0.1;
+}
+
+.main-content h1 .word {
+    display: block;
+    transition: filter 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.main-content h1 .word:hover {
+    filter: blur(20px);
+    opacity: 0.1;
+}
+
+#art h1 {
+    font-size: 90px;
+}
+
+.changing {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    color: #cacaca;
+    text-align: left;
+    font-size: 90px;
+    padding-left: 2rem;
+    text-transform: uppercase;
+    position: relative;
+    line-height: 1.1;
+    transition: 0.2s ease;
+}
+
+.changing::before {
+    content: attr(data-text);
+    /* font-family: "Life Savers", serif; */
+    font-family: "Jacquard 24", system-ui;
+    font-weight: 800;
+    font-size: 90px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(2rem) translateY(0px);
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    line-height: 1.1;
+    color: #cacaca;
+}
+
+.changing:hover {
+    color: transparent;
+}
+
+.changing:hover::before {
+    opacity: 1;
+}
+
+#art p {
+    font-family: "Space Grotesk", sans-serif;
+    color: #cacaca;
+    font-size: 16px;
+    padding-left: 2rem;
+    font-weight: 400;
+    /* text-transform: uppercase; */
+    margin: 20px 0;
+
+}
+
+
+
+
+
 
 /* ----------------------------------------------- */
-
 @media (max-width: 992px),
-/* Tablets (landscape) and small laptops */
-(max-width: 768px)
-/* Tablets (portrait) */
-    {
+(max-width: 768px) {
     .container {
         width: 98%;
         pointer-events: none;
@@ -173,7 +360,6 @@ body {
     .abstract:hover {
         display: none;
         user-select: none;
-        pointer-events: none;
     }
 
     .left {
@@ -189,7 +375,6 @@ body {
         padding: 1.5rem 2rem;
     }
 
-
     .main-content h1 {
         text-align: right;
         font-size: 25cqw;
@@ -199,11 +384,9 @@ body {
     }
 }
 
-
 /* ------------------------------------------------------ */
 /* Medium devices (large phones, small tablets) */
 @media (max-width: 600px) {
-
     .container {
         width: 98%;
         pointer-events: none;
@@ -215,7 +398,6 @@ body {
     .abstract:hover {
         display: none;
         user-select: none;
-        pointer-events: none;
     }
 
     .left {
@@ -251,7 +433,6 @@ body {
         left: 40%;
         right: 2rem;
         transform: translate(-50%, -50%);
-        /* padding-top: 5rem; */
     }
 
     .main-content h1 {
@@ -262,7 +443,6 @@ body {
         line-height: 0.77;
     }
 
-
     .abstract {
         width: 80%;
         height: 80%;
@@ -272,25 +452,30 @@ body {
         mix-blend-mode: multiply;
         transform: scale(1);
     }
-
-
 }
 
 /* ------------------------------------------------------------------- */
+/* Bottom Navigation  */
 
-/* Bottom Navigation 
+
 .site-nav {
-    position: absolute;
-    bottom: 4rem;
-    left: 50%;                    
-    transform: translateX(-50%); 
-    width: 80%; 
-    padding: 0 2rem;
+    position: fixed;
+    background-color: #121212;
+    border-top: 1px solid #cacaca22;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 1rem 0 1.6rem 0;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     letter-spacing: 0.1em;
+    z-index: 99;
+    background-image: url("/images/noise.svg");
+    background-repeat: repeat;
+    background-blend-mode: overlay;
 }
 
 .site-nav a {
@@ -302,27 +487,33 @@ body {
     position: relative;
     display: inline-block;
     overflow: hidden;
-    height: 1em; 
+    height: 1em;
+
 }
+
 .site-nav a span {
     display: block;
     transform: translateY(0);
-    transition: transform 1s cubic-bezier(.19,1,.22,1);
+    transition: transform 1s cubic-bezier(.19, 1, .22, 1);
+
 }
 
-.site-nav a::after{
+.site-nav a::after {
     content: attr(data-content);
     position: absolute;
     left: 0;
-    top: 100%; 
+    top: 100%;
     width: 100%;
     color: #cacaca;
-    transition: transform 1s cubic-bezier(.19,1,.22,1);
+    transition: transform 1s cubic-bezier(.19, 1, .22, 1);
 }
+
 .site-nav a:hover span {
     transform: translateY(-100%);
 }
 
 .site-nav a:hover::after {
     transform: translateY(-100%);
-}*/
+}
+
+/*# sourceMappingURL=style.css.map */

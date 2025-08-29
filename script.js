@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Array of image paths
+  // All possible images
   const images = [
-    "images/webp/why-a-we-eye1.webp", // rename file instead of space
+    "images/webp/why-a-we-eye1.webp",
     "images/webp/3d-ren-1.webp",
     "images/webp/3d-ren-2.webp",
     "images/webp/3d-ren-3.webp",
@@ -51,24 +51,41 @@ document.addEventListener("DOMContentLoaded", () => {
     "images/webp/3d-ren-53.webp",
   ];
 
-  // Pick a random image
-  const randomImage = images[Math.floor(Math.random() * images.length)];
-
-  // Lazy-apply background only when element is visible
   const abstractEl = document.querySelector(".abstract");
   if (abstractEl) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          abstractEl.style.backgroundImage = `url('${randomImage}')`;
-          obs.disconnect(); // load once only
-        }
-      });
-    });
-    observer.observe(abstractEl);
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    abstractEl.style.backgroundImage = `url('${randomImage}')`;
   }
 
-  // Cursor effect
+  // --- Navigation Scroll Logic ---
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav a");
+  // This now correctly finds your scrolling container
+  const scrollContainer = document.querySelector(".scroll-container");
+
+  // Make sure the scrollContainer exists before adding an event listener
+  if (scrollContainer) {
+    const onScroll = () => {
+      let currentSectionId = "";
+      sections.forEach((section) => {
+        if (scrollContainer.scrollTop >= section.offsetTop - 150) {
+          currentSectionId = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSectionId}`) {
+          link.classList.add("active");
+        }
+      });
+    };
+
+    // This was the missing piece of logic
+    scrollContainer.addEventListener("scroll", onScroll);
+  }
+
+  // --- Cursor Follow Effect ---
   const cursor = document.querySelector(".cursor-letter");
   if (cursor) {
     let mouseX = 0,
@@ -89,4 +106,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     animate();
   }
+
+  const stickers = document.querySelectorAll(".sticker");
+
+  const settings = [
+    // [rotation, speed]
+    [-10, 0.05], //
+    [5, -0.06], //
+    [15, 0.06], //
+  ];
+
+  function updateStickerPositions() {
+    const scrollY = scrollContainer.scrollTop;
+
+    stickers.forEach((sticker, index) => {
+      const [rotation, speed] = settings[index];
+      const moveY = scrollY * speed; // This calculation is the key
+      sticker.style.transform = `translateY(${moveY}px) rotate(${rotation}deg)`;
+    });
+  }
+
+  updateStickerPositions();
+  scrollContainer.addEventListener("scroll", updateStickerPositions);
 });
